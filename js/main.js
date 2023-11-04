@@ -3,11 +3,12 @@
 let appState = {
     loading: false,
     mainMenu: false,
-    leaderBoard: true
+    leaderBoard: false,
+    plantTree: true
 }
 
 function changeappState(type) {
-    appState.loading = appState.mainMenu = appState.leaderBoard = false;
+    appState.loading = appState.mainMenu = appState.leaderBoard = appState.plantTree = false;
     switch (type) {
         case "loading":
             appState.loading = true;
@@ -18,11 +19,15 @@ function changeappState(type) {
         case "leaderBoard":
             appState.leaderBoard = true;
             break;
+        case "plantTree":
+            appState.plantTree = true;
+            break;
     }
 }
 function preload() {
     preLoadingScreen();
     preMenuScreen();
+    preLeaderBoardScreen();
 }
 
 function setup() {
@@ -228,13 +233,24 @@ function lesson0() {
 
 
 //////////////////////////////// LEADERBOARD //////////////////////////////////
+let top6_player = [["player", 6]];
+let playerAvatar = [];
+
+function preLeaderBoardScreen() {
+    for (let i = 0; i < top6_player.length; i++) {
+        for (let j = 1; j < top6_player[i][1] + 1; j++) {
+            let player = top6_player[i][0] + j + ".png";
+            loadImage("./assets/leaderboard/" + player, asset => playerAvatar.push(asset));
+        }
+    }
+}
 function drawLeaderBoardScreen() {
     background('#F3F4F6');
     noStroke();
     fill('#DA1710');
     rect(0, 0, width, 0.15*height);
 
-    stroke('#FF3DDB');
+    stroke('#F3F4F6');
     strokeWeight(5);
     line(0, 0.075*height, width*0.25, 0.075*height);
     line(width*0.75, 0.075*height, width, 0.075*height);
@@ -245,4 +261,16 @@ function drawLeaderBoardScreen() {
     textStyle(BOLD)
     textFont("myFont", 32);
     text("LEADERBOARD", width/2, 0.075*height);
+
+    for (let i=0; i<6; i++) {
+        fill(125 + i*20, 186, 242);
+        rect(0.1*width, (0.2+0.13*i)*height, 0.8*width, 0.1*height, 15)
+
+        imageMode(CENTER)
+        playerAvatar[i].resize(0, 0.09*height)
+        image(playerAvatar[i], 0.2*width, (0.25+0.13*i)*height)
+
+        fill("#DEDEE1")
+        text("#Rank " + (i+1), 0.45*width, (0.25+0.13*i)*height)
+    }
 }

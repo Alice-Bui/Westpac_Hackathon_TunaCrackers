@@ -1,7 +1,7 @@
 "use strict";
 
 let appState = {
-    loading: true,
+    loading: false,
     mainMenu: false,
 
     leaderBoard: false,
@@ -13,7 +13,7 @@ let appState = {
 
     weeklyTask: false,
 
-    milestoneTrack: false,
+    milestoneTrack: true,
 }
 
 function changeappState(type) {
@@ -611,10 +611,10 @@ function drawMilestoneTrackScreen() {
             if (i==progressImg.length-1) {
                 noStroke();
                 fill("#0B6E4F");
-                textSize(20);
+                textSize(18);
                 textStyle(BOLD);
                 textAlign(LEFT, CENTER);
-                text("MONTHLY GOAL REACHED!!", 0.1*width, 0.875*height)
+                text("MONTHLY GOAL REACHED!!", 0.05*width, 0.875*height)
             }
         }
     }

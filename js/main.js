@@ -1,19 +1,25 @@
 "use strict";
 
 let appState = {
+    //LOADING & MENU SCREEN
     loading: false,
     mainMenu: false,
 
-    leaderBoard: true,
+    //LEADERBOARD SCREEN
+    leaderBoard: false,
 
+    //BOTANY SCREEN
     botany: false,
 
+    //ASKING QUESTION & BUDGET STIMULATION CALCULATOR
     askQuest: false,
     budgetStimulation: false,
 
+    //WEEKLY TASKS
     weeklyTask: false,
 
-    milestoneTrack: false,
+    //MILESTONE TRACKING
+    milestoneTrack: true,
 }
 
 function changeappState(type) {

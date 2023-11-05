@@ -4,7 +4,7 @@ let appState = {
     loading: false,
     mainMenu: false,
 
-    leaderBoard: false,
+    leaderBoard: true,
 
     botany: false,
 
@@ -13,7 +13,7 @@ let appState = {
 
     weeklyTask: false,
 
-    milestoneTrack: true,
+    milestoneTrack: false,
 }
 
 function changeappState(type) {
@@ -280,14 +280,14 @@ function drawLeaderBoardScreen() {
 
     stroke('#F3F4F6');
     strokeWeight(5);
-    line(0, 0.075*height, width*0.25, 0.075*height);
-    line(width*0.75, 0.075*height, width, 0.075*height);
+    line(0, 0.075*height, width*0.2, 0.075*height);
+    line(width*0.8, 0.075*height, width, 0.075*height);
 
     fill("#F9F9FB");
     noStroke();
     textAlign(CENTER, CENTER);
     textStyle(BOLD);
-    textFont("myFont", 32);
+    textFont("myFont", 30);
     text("LEADERBOARD", width/2, 0.075*height);
 
     for (let i=0; i<6; i++) {
